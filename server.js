@@ -1,8 +1,12 @@
 import express from 'express';
 import { Liquid } from 'liquidjs';
+import multer from 'multer';
+
 // import { graphql, buildSchema } from 'graphql';
 
 const app = express()
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Maak werken met data uit formulieren iets prettig
 app.use(express.urlencoded({ extended: true }))
@@ -20,11 +24,16 @@ app.engine('liquid', engine.express());
 app.set('views', './views')
 
 
+// https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[uuid][_eq]=6d82507e-9bc9-452e-a768-a1bb90d7a37d
+
+
+// specifiek test snapmap
+// https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[name][_icontains]=1J
 
 
 // Snapmaps
 
-const groupsResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[uuid][_eq]=6d82507e-9bc9-452e-a768-a1bb90d7a37d')
+const groupsResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[name][_icontains]=1J')
 const groupsJSON = await groupsResponse.json()
 
 
@@ -35,12 +44,12 @@ app.get('/snappmaps', async function (request, response) {
 
 
 
-
 app.get('/snappmaps/:uuid', async function (request, response) {
 
   const snappmapResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snapmap?fields=*.*.*&filter[uuid][_eq]=' + request.params.uuid)
   const snappmappJSON = await snappmapResponse.json()
   const path = request.path
+
 
   response.render('snappmap.liquid', { snappmap: snappmappJSON.data, groups: groupsJSON.data, path: path, currentPage: '' })
 })
@@ -100,15 +109,6 @@ app.get('/snapps/user/:uuid', async function (request, response) {
 
 
 
-app.use((req, res) => {
-  res.status(404).render('404.liquid')
-})
-
-
-
-
-
-
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {
@@ -118,50 +118,115 @@ app.get(…, async function (request, response) {
 })
 */
 
-/*
+
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
-app.post(…, async function (request, response) {
 
-  // In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
-  console.log(request.body)
 
-  // Via een fetch() naar Directus vullen we nieuwe gegevens in
 
-  // Zie https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch over fetch()
-  // Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
-  // Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
-  // Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
-  const fetchResponse = await fetch(…, {
-    method: …,
-    body: JSON.stringify(…),
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
+// In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
+
+// Via een fetch() naar Directus vullen we nieuwe gegevens in
+
+// Zie https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch over fetch()
+// Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
+// Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
+// Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
+
+
+
+// const fetchResponse = await fetch('https://fdnd-agency.directus.app/files', {
+
+//   method: 'POST',
+//   body: JSON.stringify(
+//     {
+//       location: 'Amsterdam',
+
+//       snap: request.body.picture
+//     }
+//   ),
+//   headers: {
+//     'Content-Type': 'application/json;charset=UTF-8'
+//   }
+// })
+
+// Als de POST niet gelukt is, kun je de response loggen. Sowieso een goede debugging strategie.
+// console.log(fetchResponse)
+
+// Eventueel kun je de JSON van die response nog debuggen
+// const fetchResponseJSON = await fetchResponse.json()
+// console.log(fetchResponseJSON)
+
+// Redirect de gebruiker daarna naar een logische volgende stap
+// Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
+
+
+app.post('/snappmaps/:uuid', upload.single('file'), async function (request, response) {
+
+  const snappmapid = request.params.uuid
+  const file = request.file
+
+  console.log(file)
+
+  const formData = new FormData()
+  const blob = new Blob([file.buffer], { type: file.mimetype })
+  formData.append("file", blob, file.originalname)
+
+  const uploadResponse = await fetch('https://fdnd-agency.directus.app/files', {
+    method: "POST",
+    body: formData,
   })
 
-  // Als de POST niet gelukt is, kun je de response loggen. Sowieso een goede debugging strategie.
-  // console.log(fetchResponse)
+  const uploadResponseData = await uploadResponse.json()
+  console.log(uploadResponse.status)
+  console.log(uploadResponseData)
 
-  // Eventueel kun je de JSON van die response nog debuggen
-  // const fetchResponseJSON = await fetchResponse.json()
-  // console.log(fetchResponseJSON)
+  if (uploadResponseData.data.id != null) {
+    let newSnap = {
+      location: 'Haarlem',
+      snapmap: snappmapid,
+      author: '505c32d4-88fc-4102-8ef8-0847e9d9292b',
+      picture: uploadResponseData.data.id,
+    }
 
-  // Redirect de gebruiker daarna naar een logische volgende stap
-  // Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
-  response.redirect(303, …)
+    const snapResponse = await fetch(`https://fdnd-agency.directus.app/items/snappthis_snap`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newSnap),
+    })
+
+
+    if (snapResponse.ok) {
+      response.redirect(303, `/snappmaps/${snappmapid}`)
+    } else {
+      console.error("Failed to create snap item")
+      response.status(500).send("File uploaded, but database entry failed.")
+    }
+
+  } else {
+    return res.redirect(303, `/snappmaps/${snappmapid}?error=upload_failed`)
+  }
+
 })
-*/
+
+
+// Eerst een fetch (post) naar /files met alle data van de foto. Daarna ALS dat gelukt is de ID ervan (die haal je eerst terug met een fetch) sturen (POST) naar de juiste snappmap.
 
 
 
 
 
-
-app.post('/', async function (request, response) {
-  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  response.redirect(303, '/')
+app.use((req, res) => {
+  res.status(404).render('404.liquid')
 })
+
+
+// app.post('/', async function (request, response) {
+//   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+//   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+//   response.redirect(303, '/')
+// })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000, als dit ergens gehost wordt, is het waarschijnlijk poort 80
