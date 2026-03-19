@@ -20,20 +20,21 @@
     </h1>
   {% endif %}
 
-  <form action="/snappmaps/{{snappmap[0].uuid}}" method="POST" enctype="multipart/form-data">
-    <label for="fileInput">
-      <svg viewBox="0 0 43 36" xmlns="http://www.w3.org/2000/svg" height="30">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M21.5 15.05C18.4178 15.05 15.91 17.5578 15.91 20.64C15.91 23.7222 18.4178 26.23 21.5 26.23C24.5823 26.23 27.09 23.7222 27.09 20.64C27.09 17.5578 24.5823 15.05 21.5 15.05ZM30.96 5.59C30.96 2.5026 28.4574 0 25.37 0H17.63C14.5426 0 12.04 2.5026 12.04 5.59H5.59C2.5026 5.59 0 8.0926 0 11.18V30.1C0 33.1874 2.5026 35.69 5.59 35.69H37.41C40.4974 35.69 43 33.1874 43 30.1V11.18C43 8.0926 40.4974 5.59 37.41 5.59H30.96ZM21.5 30.53C16.0463 30.53 11.61 26.0933 11.61 20.64C11.61 15.1868 16.0463 10.75 21.5 10.75C26.9537 10.75 31.39 15.1868 31.39 20.64C31.39 26.0933 26.9537 30.53 21.5 30.53Z" fill=""/>
+  <form action="/snappmaps/{{snappmap[0].uuid}}" method="POST" enctype="multipart/form-data" class="picture">
+    <label for="file">
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="100" fill="#00E53D"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M99.7856 93.1627C94.2754 93.1627 89.7922 97.6459 89.7922 103.156C89.7922 108.666 94.2754 113.149 99.7856 113.149C105.296 113.149 109.779 108.666 109.779 103.156C109.779 97.6459 105.296 93.1627 99.7856 93.1627V93.1627ZM116.697 76.2509C116.697 70.7315 112.223 66.2576 106.704 66.2576H92.8671C87.3477 66.2576 82.8737 70.7315 82.8737 76.2509H71.343C65.8236 76.2509 61.3496 80.7249 61.3496 86.2443V120.068C61.3496 125.587 65.8236 130.061 71.343 130.061H128.228C133.748 130.061 138.222 125.587 138.222 120.068V86.2443C138.222 80.7249 133.748 76.2509 128.228 76.2509H116.697ZM99.7856 120.837C90.0359 120.837 82.105 112.905 82.105 103.156C82.105 93.4072 90.0359 85.4755 99.7856 85.4755C109.535 85.4755 117.466 93.4072 117.466 103.156C117.466 112.905 109.535 120.837 99.7856 120.837V120.837Z" fill="white"/>
       </svg>
     </label>
-    <input type="file" name="file" accept="image/*" capture="environment" required>
-    <button type="submit">Upload!</button>
+    <input type="file" name="file" accept="image/*" capture="environment" id="file" required hidden>
+    <button type="submit" class="shown">Upload!</button>
   </form>
 
   <ul class="grid-view">
     {% for snappmap in snappmap %}
       {% for snapp in snappmap.snaps %}
-        {% if snapp.picture.id != null %}
+        {% if snapp.picture.id != null and snapp.picture.filesize != null %}
           <li>
             <a href="/snapps/snappmap/{{ snapp.uuid }}">
               <img
