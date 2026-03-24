@@ -235,8 +235,20 @@ form.picture {
         font-size: var(--text-size-s);
     }
 
+    img.image-preview {
+        display: none;
+    }
+
+    input {
+        display: none;
+    }
+
     &:valid {
         button {
+            display: block;
+        }
+
+        img.image-preview {
             display: block;
         }
     }
