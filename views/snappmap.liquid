@@ -44,7 +44,7 @@
     <button type="submit" class="shown">Upload!</button>
   </form>
 
-  <ul class="grid-view">
+  <ul class="grid-view grid-small">
     {% for snappmap in snappmap %}
       {% for snapp in snappmap.snaps %}
         {% if snapp.picture.id != null and snapp.picture.filesize != null %}

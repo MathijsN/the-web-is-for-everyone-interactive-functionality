@@ -65,10 +65,28 @@ img {
     object-position: center;
 }
 
+
+/* different snappmap views */
+
 ul.grid-view {
     display: grid;
-    grid-template-columns: repeat(3, 33%);
-    gap: 3px 0.5%;
+    gap: 3px;
+
+    &.grid-Xlarge {
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    &.grid-large {
+        grid-template-columns: repeat(3, 33%);
+    }
+
+    &.grid-medium {
+        grid-template-columns: repeat(4, 25%);
+    }
+
+    &.grid-small {
+        grid-template-columns: repeat(5, 20%);
+    }
 
     li {
         display: contents;
@@ -78,6 +96,9 @@ ul.grid-view {
         }
     }
 }
+
+
+
 
 nav {
     height: var(--bar-height);
@@ -140,6 +161,45 @@ nav {
                 }
             }
 
+        }
+    }
+}
+
+
+[popover].view-selection {
+
+    top: var(--bar-height);
+    width: 100%;
+    border: 0;
+    padding: var(--spacing-m);
+
+    ul {
+
+        &:nth-of-type(1) {
+            margin-bottom: var(--spacing-m);
+        }
+
+        li {
+            margin-block: var(--spacing-s);
+
+            &:nth-of-type(1) {
+                color: var(--color-secondary-text);
+            }
+
+            button,
+            a {
+                background-color: transparent;
+                border: none;
+                font-size: var(--text-size-s);
+                font-weight: unset;
+                font-family: BariolReg;
+
+                cursor: pointer;
+
+                svg {
+                    margin-right: var(--spacing-s);
+                }
+            }
         }
     }
 }
