@@ -6,25 +6,39 @@ viewButtons.forEach((button) => {
 
         const currentID = ev.target.id
 
+        viewButtons.forEach(button => {
+            button.className = ''
+        })
+
         if (currentID === 'XLarge') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-Xlarge")
+
+            ev.target.classList.add("active-view")
         }
         if (currentID === 'Large') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-large")
+
+            ev.target.classList.add("active-view")
         }
         if (currentID === 'Medium') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-medium")
+
+            ev.target.classList.add("active-view")
         }
         if (currentID === 'Small') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-small")
+
+            ev.target.classList.add("active-view")
         }
         if (currentID === 'List') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-list")
+
+            ev.target.classList.add("active-view")
         }
     })
 })
