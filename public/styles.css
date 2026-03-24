@@ -193,6 +193,8 @@ nav {
                 font-size: var(--text-size-s);
                 font-weight: unset;
                 font-family: BariolReg;
+                text-decoration: none;
+                color: black;
 
                 cursor: pointer;
 

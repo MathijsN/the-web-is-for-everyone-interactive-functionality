@@ -1,3 +1,34 @@
+const viewButtons = document.querySelectorAll('.view-selection ul li button')
+const grid = document.getElementById('grid')
+
+viewButtons.forEach((button) => {
+    button.addEventListener('click', ev => {
+
+        const currentID = ev.target.id
+
+        if (currentID === 'XLarge') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-Xlarge")
+        }
+        if (currentID === 'Large') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-large")
+        }
+        if (currentID === 'Medium') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-medium")
+        }
+        if (currentID === 'Small') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-small")
+        }
+        if (currentID === 'List') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-list")
+        }
+    })
+})
+
 
 document.getElementById('file').onchange = function (evt) {
     const [file] = this.files;
