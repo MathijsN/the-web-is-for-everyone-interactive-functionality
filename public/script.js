@@ -36,12 +36,21 @@ viewButtons.forEach((button) => {
         }
         if (currentID === 'List') {
             grid.className = ''
-            grid.classList.add("grid-view", "grid-list")
+            grid.classList.add("grid-view", "list")
 
             ev.target.classList.add("active-view")
         }
     })
 })
+
+function loadInitialView() {
+    grid.className = ''
+    grid.classList.add("grid-view", "grid-large")
+
+    document.getElementById('Large').classList.add("active-view")
+}
+
+loadInitialView()
 
 
 document.getElementById('file').onchange = function (evt) {

@@ -44,7 +44,7 @@
     <button type="submit" class="shown">Upload!</button>
   </form>
 
-  <ul class="grid-view grid-large" id="grid">
+  <ul class="grid-view" id="grid">
     {% for snappmap in snappmap %}
       {% for snapp in snappmap.snaps %}
         {% if snapp.picture.id != null and snapp.picture.filesize != null %}
@@ -55,6 +55,16 @@
                 alt="Image made in {{ snapp.location }}"
                 loading="lazy"
               >
+              <div>
+                <h2>{{ snapp.author.name }}</h2>
+                <p>{{ snapp.location }}</p>
+
+                <ul>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
             </a>
           </li>
         {% endif %}

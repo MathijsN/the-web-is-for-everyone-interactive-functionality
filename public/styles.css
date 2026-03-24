@@ -88,6 +88,8 @@ ul.grid-view {
         grid-template-columns: repeat(5, 20%);
     }
 
+    &.list {}
+
     li {
         display: contents;
 
