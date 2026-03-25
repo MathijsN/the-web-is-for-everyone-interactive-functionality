@@ -42,6 +42,7 @@ body {
     margin-bottom: var(--bar-height);
 
     font-size: var(--text-size-m);
+    overflow-x: hidden;
 }
 
 h1 {
@@ -338,7 +339,7 @@ ul.snapp-link-list {
 }
 
 .active {
-    filter: invert(59%) sepia(97%) saturate(400%) hue-rotate(95deg) brightness(96%) contrast(101%);
+    filter: brightness(0) saturate(100%) invert(48%) sepia(78%) saturate(2852%) hue-rotate(122deg) brightness(106%) contrast(101%);
 }
 
 
