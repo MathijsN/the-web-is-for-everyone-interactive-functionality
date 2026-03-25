@@ -1,5 +1,6 @@
 const viewButtons = document.querySelectorAll('.view-selection ul li button')
 const grid = document.getElementById('grid')
+const viewImg = document.querySelector('.viewImg')
 
 viewButtons.forEach((button) => {
     button.addEventListener('click', ev => {
@@ -15,30 +16,40 @@ viewButtons.forEach((button) => {
             grid.classList.add("grid-view", "grid-Xlarge")
 
             ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid2White.svg"
         }
         if (currentID === 'Large') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-large")
 
             ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid3White.svg"
         }
         if (currentID === 'Medium') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-medium")
 
             ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid4White.svg"
         }
         if (currentID === 'Small') {
             grid.className = ''
             grid.classList.add("grid-view", "grid-small")
 
             ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid5White.svg"
         }
         if (currentID === 'List') {
             grid.className = ''
             grid.classList.add("grid-view", "list")
 
             ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/ListWhite.svg"
         }
     })
 })

@@ -15,6 +15,7 @@
     /* Custom properties: widely */
     --color-primary: #172F3B;
     --color-button-background: #E9ECEE;
+    --color-background-secondary: #EEEEEE;
     --color-secondary: #fff;
     --color-secondary-text: #90A1AA;
     --color-accent: #00E53D;
@@ -93,9 +94,41 @@ ul.grid-view {
     }
 
     &.list {
-        div {
+        section {
+            background-color: var(--color-background-secondary);
             display: block;
             grid-column: span 2;
+            padding: var(--spacing-s);
+            padding-bottom: var(--spacing-m);
+
+            color: black;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            article {
+                h2 {
+                    font-size: var(--text-size-m);
+                }
+
+                p {
+                    color: var(--color-secondary-text);
+                }
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                gap: var(--spacing-m);
+
+                li {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 6px;
+                    align-content: center;
+                }
+            }
         }
     }
 
@@ -105,7 +138,7 @@ ul.grid-view {
         a {
             display: contents;
 
-            div {
+            section {
                 display: none;
             }
         }
