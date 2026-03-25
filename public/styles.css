@@ -162,7 +162,7 @@ nav {
         ul {
             display: flex;
             justify-content: center;
-            gap: 15%;
+            gap: 25%;
             height: 100%;
 
             a {
