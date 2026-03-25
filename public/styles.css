@@ -317,11 +317,10 @@ details.snappmaps-list {
 
 ul.snapp-link-list {
     display: flex;
-    column-gap: 5px;
+    gap: 5px;
     flex-wrap: wrap;
 
     li {
-        height: 13vh;
         align-content: center;
         font-size: var(--text-size-s);
         color: var(--color-secondary-text);
@@ -334,6 +333,7 @@ ul.snapp-link-list {
             color: var(--color-primary);
             text-decoration: none;
             font-size: var(--text-size-m);
+            display: block;
         }
     }
 }
