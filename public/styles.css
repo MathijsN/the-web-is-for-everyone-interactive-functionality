@@ -218,53 +218,61 @@ nav {
     display: none;
 }
 
-@supports selector([popover]) {
-    :popover-open.view-selection {
-        display: block;
-        top: var(--bar-height);
-        width: 100%;
-        border: 0;
-        padding: var(--spacing-m);
+:popover-open.view-selection {
+    display: block;
+    top: var(--bar-height);
+    width: 100%;
+    border: 0;
+    padding: var(--spacing-m);
 
-        ul {
+    ul {
+
+        &:nth-of-type(1) {
+            margin-bottom: var(--spacing-m);
+        }
+
+        li {
+            margin-block: var(--spacing-s);
 
             &:nth-of-type(1) {
-                margin-bottom: var(--spacing-m);
+                color: var(--color-secondary-text);
             }
 
-            li {
-                margin-block: var(--spacing-s);
+            button,
+            a {
+                background-color: transparent;
+                border: none;
+                font-size: var(--text-size-s);
+                font-weight: unset;
+                font-family: BariolReg;
+                text-decoration: none;
+                color: black;
 
-                &:nth-of-type(1) {
-                    color: var(--color-secondary-text);
+                cursor: pointer;
+
+                svg {
+                    margin-right: var(--spacing-s);
                 }
+            }
 
-                button,
-                a {
-                    background-color: transparent;
-                    border: none;
-                    font-size: var(--text-size-s);
-                    font-weight: unset;
-                    font-family: BariolReg;
-                    text-decoration: none;
-                    color: black;
-
-                    cursor: pointer;
-
-                    svg {
-                        margin-right: var(--spacing-s);
-                    }
-                }
-
-                button.active-view::after {
-                    display: inline-block;
-                    width: 1em;
-                    height: 1em;
-                    vertical-align: -0.125em;
-                    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z'/%3E%3C/svg%3E");
-                }
+            button.active-view::after {
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                vertical-align: -0.125em;
+                content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z'/%3E%3C/svg%3E");
             }
         }
+    }
+}
+
+.viewImg {
+    display: none;
+}
+
+@supports selector(:popover-open) {
+    .viewImg {
+        display: block;
     }
 }
 
@@ -324,6 +332,7 @@ ul.snapp-link-list {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
+    margin-left: 5px;
 
     li {
         align-content: center;

@@ -31,11 +31,9 @@ app.set('views', './views')
 // https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[name][_icontains]=1J
 
 
-// Snapmaps
-
-const groupsResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[name][_icontains]=1J')
+// Snappmaps
+const groupsResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[uuid][_eq]=6d82507e-9bc9-452e-a768-a1bb90d7a37d')
 const groupsJSON = await groupsResponse.json()
-
 
 app.get('/snappmaps', async function (request, response) {
 
@@ -46,12 +44,12 @@ app.get('/snappmaps', async function (request, response) {
 
 app.get('/snappmaps/:uuid', async function (request, response) {
 
-  const snappmapResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snapmap?fields=*.*.*&filter[uuid][_eq]=' + request.params.uuid)
+  const snappmapResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snapmap?fields=*.*.*.*&filter[uuid][_eq]=' + request.params.uuid)
   const snappmappJSON = await snappmapResponse.json()
   const path = request.path
 
 
-  response.render('snappmap.liquid', { snappmap: snappmappJSON.data, groups: groupsJSON.data, path: path, currentPage: '' })
+  response.render('snappmap.liquid', { snappmap: snappmappJSON.data, groups: groupsJSON.data, path: path, currentPage: '', userId: userId })
 })
 
 
@@ -62,7 +60,7 @@ app.get('/snappmaps/:uuid', async function (request, response) {
 
 
 
-
+const userId = '505c32d4-88fc-4102-8ef8-0847e9d9292b'
 
 // Snapps
 
@@ -79,86 +77,34 @@ app.get('/snapps/:location', async function (request, response) {
 
 app.get('/snapps/snappmap/:uuid', async function (request, response) {
 
-  const snappResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snap?fields=*.*&filter[uuid][_eq]=' + request.params.uuid)
+  const snappResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snap?fields=*.*.*.*.*&filter[uuid][_eq]=' + request.params.uuid)
   const snappJSON = await snappResponse.json()
 
-  response.render('snapp.liquid', { snapp: snappJSON.data[0], groups: groupsJSON.data, path: request.path, currentPage: '' })
+  response.render('snapp.liquid', { snapp: snappJSON.data[0], groups: groupsJSON.data, path: request.path, currentPage: '', userId: userId })
 })
 
 app.get('/snapps/location/:uuid', async function (request, response) {
 
-  const snappResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snap?fields=*.*&filter[uuid][_eq]=' + request.params.uuid)
+  const snappResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snap?fields=*.*.*.*.*&filter[uuid][_eq]=' + request.params.uuid)
   const snappJSON = await snappResponse.json()
 
-  response.render('snapp.liquid', { snapp: snappJSON.data[0], groups: groupsJSON.data, path: request.path, currentPage: '' })
+  response.render('snapp.liquid', { snapp: snappJSON.data[0], groups: groupsJSON.data, path: request.path, currentPage: '', userId: userId })
 })
 
 
 app.get('/snapps/user/:uuid', async function (request, response) {
 
-  const snappResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snap?fields=*.*&filter[author][uuid][_eq]=' + request.params.uuid)
+  const snappResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_snap?fields=*.*.*.*.*&filter[author][uuid][_eq]=' + request.params.uuid)
   const snappJSON = await snappResponse.json()
 
-  response.render('snappmap.liquid', { snapps: snappJSON.data, path: request.path, currentPage: '' })
+  response.render('snappmap.liquid', { snapps: snappJSON.data, path: request.path, currentPage: '', userId: userId })
 })
 
 
 
 
 
-
-
-
-/*
-// Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
-app.get(…, async function (request, response) {
-  
-  // Zie https://expressjs.com/en/5x/api.html#res.render over response.render()
-  response.render(…)
-})
-*/
-
-
-// Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
-
-
-
-// In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
-
-// Via een fetch() naar Directus vullen we nieuwe gegevens in
-
-// Zie https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch over fetch()
-// Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
-// Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
-// Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
-
-
-
-// const fetchResponse = await fetch('https://fdnd-agency.directus.app/files', {
-
-//   method: 'POST',
-//   body: JSON.stringify(
-//     {
-//       location: 'Amsterdam',
-
-//       snap: request.body.picture
-//     }
-//   ),
-//   headers: {
-//     'Content-Type': 'application/json;charset=UTF-8'
-//   }
-// })
-
-// Als de POST niet gelukt is, kun je de response loggen. Sowieso een goede debugging strategie.
-// console.log(fetchResponse)
-
-// Eventueel kun je de JSON van die response nog debuggen
-// const fetchResponseJSON = await fetchResponse.json()
-// console.log(fetchResponseJSON)
-
-// Redirect de gebruiker daarna naar een logische volgende stap
-// Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
-
+// POST 
 
 app.post('/snappmaps/:uuid', upload.single('file'), async function (request, response) {
 
@@ -209,10 +155,6 @@ app.post('/snappmaps/:uuid', upload.single('file'), async function (request, res
   }
 
 })
-
-
-// Eerst een fetch (post) naar /files met alle data van de foto. Daarna ALS dat gelukt is de ID ervan (die haal je eerst terug met een fetch) sturen (POST) naar de juiste snappmap.
-
 
 
 
