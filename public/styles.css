@@ -170,7 +170,7 @@ ul.grid-view {
         animation-duration: 0.2s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
-        animation-delay: calc(0.1s * sibling-index());
+        animation-delay: calc(0.05s * sibling-index());
 
         opacity: 0;
     }
@@ -178,7 +178,7 @@ ul.grid-view {
 
 @keyframes --scale-in {
     from {
-        scale: 1.4;
+        scale: 0.8;
     }
 
     to {
