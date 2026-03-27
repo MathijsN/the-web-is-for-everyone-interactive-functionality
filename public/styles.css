@@ -95,6 +95,12 @@ ul.grid-view {
     }
 
     &.list {
+        li {
+            display: grid;
+            grid-template-columns: repeat(3, 33%);
+            grid-column: span 3;
+        }
+
         section {
             background-color: var(--color-background-secondary);
             display: block;
@@ -133,9 +139,20 @@ ul.grid-view {
         }
     }
 
-    li {
-        display: contents;
+    .snapp-image {
+        background-color: var(--color-button-background);
+        overflow: hidden;
 
+        animation: --scale-in;
+        animation-duration: 0.2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-delay: calc(0.1s * sibling-index());
+
+        opacity: 0;
+    }
+
+    li {
         a {
             display: contents;
 
@@ -146,7 +163,16 @@ ul.grid-view {
     }
 }
 
+@keyframes --scale-in {
+    from {
+        scale: 1.4;
+    }
 
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
 
 
 nav {
@@ -181,6 +207,7 @@ nav {
     &.top-nav {
         position: sticky;
         top: 0;
+        z-index: 10;
 
         ul.nav-layout {
             display: grid;

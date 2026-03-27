@@ -9,6 +9,8 @@
     {% render 'partials/top-navigation.liquid', title: snapps[0].location, groups: groups %}
   {% endif %}
 
+  {% assign snappmapId = snappmap[0].uuid %}
+
   {% for snappmap in snappmap %}
     {% for group in snappmap.groups %}
       {% for user in group.snappthis_group_uuid.users %}
@@ -22,10 +24,13 @@
               </span>
               {{ groups[0].name }}
             </h1>
-          {% endif %}
 
-          {% if path contains 'snappmaps' %}
-            <form action="/snappmaps/{{snappmap[0].uuid}}" method="POST" enctype="multipart/form-data" class="picture">
+            <form
+              action="/snappmaps/{{ snappmapId }}"
+              method="POST"
+              enctype="multipart/form-data"
+              class="picture"
+            >
               <label for="file">
                 <svg
                   width="200"
@@ -58,7 +63,7 @@
     {% for snappmap in snappmap %}
       {% for snapp in snappmap.snaps %}
         {% if snapp.picture.id != null and snapp.picture.filesize != null %}
-          <li>
+          <li class="snapp-image">
             <a href="/snapps/snappmap/{{ snapp.uuid }}">
               <img
                 src="https://fdnd-agency.directus.app/assets/{{ snapp.picture.id }}"

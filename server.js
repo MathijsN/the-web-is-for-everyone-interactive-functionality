@@ -32,7 +32,7 @@ app.set('views', './views')
 
 
 // Snappmaps
-const groupsResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[uuid][_eq]=6d82507e-9bc9-452e-a768-a1bb90d7a37d')
+const groupsResponse = await fetch('https://fdnd-agency.directus.app/items/snappthis_group?fields=name,uuid,snappmap.snappthis_snapmap_uuid.*.*.*&filter[name][_icontains]=1J')
 const groupsJSON = await groupsResponse.json()
 
 app.get('/snappmaps', async function (request, response) {
