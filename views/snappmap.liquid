@@ -64,6 +64,11 @@
     <button popovertarget="succes-message">OK</button>
   </div>
 
+  <div popover id="error-message" class="error-message">
+    <h2>Something went wrong, please try again.</h2>
+    <button popovertarget="error-message">Try again</button>
+  </div>
+
   <ul class="grid-view" id="grid">
     {% for snappmap in snappmap %}
       {% for snapp in snappmap.snaps %}

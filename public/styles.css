@@ -434,7 +434,8 @@ form.picture {
 }
 
 
-:popover-open.succes-message {
+:popover-open.succes-message,
+:popover-open.error-message {
 
     border: none;
     display: flex;
@@ -461,6 +462,6 @@ form.picture {
         background-color: var(--color-accent);
         color: var(--color-secondary);
         border: 0;
-        border-radius: 50%;
+        border-radius: 2rem;
     }
 }
