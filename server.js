@@ -144,7 +144,7 @@ app.post('/snappmaps/:uuid', upload.single('file'), async function (request, res
 
 
     if (snapResponse.ok) {
-      response.redirect(303, `/snappmaps/${snappmapid}`)
+      response.redirect(303, `/snappmaps/${snappmapid}?status=succes`)
     } else {
       console.error("Failed to create snap item")
       response.status(500).send("File uploaded, but database entry failed.")

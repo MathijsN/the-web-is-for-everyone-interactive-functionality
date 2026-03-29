@@ -1,6 +1,7 @@
 const viewButtons = document.querySelectorAll('.view-selection ul li button')
 const grid = document.getElementById('grid')
 const viewImg = document.querySelector('.viewImg')
+const succesPopover = document.getElementById('succes-message')
 
 viewButtons.forEach((button) => {
     button.addEventListener('click', ev => {
@@ -78,3 +79,7 @@ document.getElementById('file').onchange = function (evt) {
         svg.style.display = 'none';
     }
 };
+
+if (window.location.href.includes('succes')) {
+    succesPopover.showPopover()
+}

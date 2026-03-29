@@ -59,6 +59,11 @@
     {% endfor %}
   {% endfor %}
 
+  <div popover id="succes-message" class="succes-message">
+    <h2>Your snapp has been added succesfully!</h2>
+    <button popovertarget="succes-message">OK</button>
+  </div>
+
   <ul class="grid-view" id="grid">
     {% for snappmap in snappmap %}
       {% for snapp in snappmap.snaps %}
