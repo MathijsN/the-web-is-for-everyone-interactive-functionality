@@ -119,10 +119,10 @@
 
     {% for snapp in snapps %}
       {% if snapp.picture.id != null %}
-        <li>
+        <li class="snapp-image">
           <a href="/snapps/location/{{ snapp.uuid }}">
             <img
-              src="https://fdnd-agency.directus.app/assets/{{ snapp.picture.id }}"
+              src="https://fdnd-agency.directus.app/assets/{{ snapp.picture.id }}?width=300&format=webp"
               alt="Image made in {{ snapp.location }}"
               loading="lazy"
             >

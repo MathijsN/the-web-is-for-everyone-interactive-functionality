@@ -143,14 +143,6 @@ ul.grid-view {
     .snapp-image {
         background-color: var(--color-button-background);
         overflow: hidden;
-
-        /* animation: --scale-in;
-        animation-duration: 0.2s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-        animation-delay: calc(0.1s * sibling-index());
-
-        opacity: 0; */
     }
 
     li {
@@ -165,14 +157,16 @@ ul.grid-view {
 }
 
 @supports (animation-delay: calc(0.1s * sibling-index())) {
-    .snapp-image {
-        animation: --scale-in;
-        animation-duration: 0.2s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-        animation-delay: calc(0.05s * sibling-index());
+    @media (prefers-reduced-motion: no-preference) {
+        .snapp-image {
+            animation: --scale-in;
+            animation-duration: 0.2s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.05s * sibling-index());
 
-        opacity: 0;
+            opacity: 0;
+        }
     }
 }
 
