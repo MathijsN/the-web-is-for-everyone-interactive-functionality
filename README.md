@@ -1,32 +1,31 @@
-# Server-Side Website
+# Snappthis
 
-Ontwerp en ontwikkel een server-side website voor een opdrachtgever
+Snappthis is een mobiele webapplicatie waarmee gebruikers foto's delen binnen zogenoemde snappmaps. Een gebruiker wordt uitgenodigd in een groep; die groep kan meerdere snappmaps bevatten. Een begeleider, bijvoorbeeld een docent, maakt een snappmap aan en geeft deze een thema of opdracht. Deelnemers delen hierin zelfgemaakte foto's, die dienen als inspiratie en gespreksonderwerp vanuit de echte wereld.
 
-De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/server-side-rendering-server-side-website/blob/main/docs/INSTRUCTIONS.md)
+## Bescrhrijving
 
+### Responsive
 
-## Inhoudsopgave
+Aangezien het idee van de webapp tot nu toe alleen mobiel is, is er nog nog geen desktop design. De website is wel responsive al zitten er nog geen layout veranderingen in voor desktop.
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
+<img width="350" height="745" alt="Screenshot 2026-04-01 at 10 05 07" src="https://github.com/user-attachments/assets/d22a19f3-fc19-43fd-a60f-4bc580a21bba" />
 
-## Beschrijving
-<!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+<img width="1480" height="739" alt="Screenshot 2026-04-01 at 10 06 35" src="https://github.com/user-attachments/assets/17db6872-9ce1-41cc-a747-25235a9d27ef" />
+
+Maar je kan wel ve view veranderen zodat je op destkop kleinere foto's krijgt.
+
+<img width="1477" height="742" alt="Screenshot 2026-04-01 at 10 07 47" src="https://github.com/user-attachments/assets/290ea4ef-4e4b-47b2-abe0-85546fb2aeef" />
+
+### Toegankelijkheid
 
 ## Gebruik
-<!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
 
-## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
+De hoofd functionaliteit van de webapp is het uploaden van snapps naar een specifieke snappmap. De website staat standaard ingesteld op de 'test' snappmap. Om foto's in deze snappmap te uploaden druk je op de groene foto knop.
+
+<img width="1171" height="472" alt="Screenshot 2026-04-01 at 10 16 47" src="https://github.com/user-attachments/assets/6682e2dd-f8a5-4ab5-9c7e-940d652141dd" />
 
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+Als je de codes zelf wilt aanpassen vergeet dan niet bij het installeren eerst **npm install** te doen.
 
 ## Bronnen
 
