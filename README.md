@@ -101,10 +101,14 @@ Met behulp van deze code check ik of de upload gelukt is, zo niet krijgt je een 
 
 
 ## Installatie
-Als je de codes zelf wilt aanpassen vergeet dan niet bij het installeren eerst **npm install** te doen.
 
-## Bronnen
+Als je zelf aan dit project wilt werken is de eerste stap na het clonen `npm install` te doen, dit doe je in de terminal van de code editor. Hiermee zorg je er voor dat alle benodigde packages geinstalleerd worden in het project.
 
-## Licentie
+Wil je een nieuwe pagina?
+Maak een nieuwe app.get `route` en maak een nieuwe `view` aan in de map `views`.
+
+Test de website locaal door middel van `npm start`
+
+## licensie
 
 This project is licensed under the terms of the [MIT license](./LICENSE).
