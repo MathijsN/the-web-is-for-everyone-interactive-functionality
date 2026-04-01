@@ -24,6 +24,12 @@ De hoofd functionaliteit van de webapp is het uploaden van snapps naar een speci
 
 <img width="1171" height="472" alt="Screenshot 2026-04-01 at 10 16 47" src="https://github.com/user-attachments/assets/6682e2dd-f8a5-4ab5-9c7e-940d652141dd" />
 
+## Kenmerken
+
+In dit project maak ik gebruik van ExpressJS (voor NodeJS) en LiquidJS. De hoofd functionaliteit is een POST van een foto naar de snappmap. De inhoud van het formulier (een foto) wordt doorgestuurd naar de post route die vervolgens het doorstuurd naar de database. Vervolgens halen wij uit de database de bijbehorende ID van de foto op en sturen die door naar de juiste snappmap.
+
+Voor de view verander functie is een popover gebruikt die progressive enhanced is. Dat wilt zeggen dat als de browser geen popover ondersteund er niks zichtbaar is. De functionaliteit van de view verander functie is gemaakt met (client-side) Javascript. Ik check hier welke button geklikt is om de juiste classes te triggeren.
+
 ## Installatie
 Als je de codes zelf wilt aanpassen vergeet dan niet bij het installeren eerst **npm install** te doen.
 
