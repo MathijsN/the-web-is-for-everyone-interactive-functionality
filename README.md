@@ -30,6 +30,76 @@ In dit project maak ik gebruik van ExpressJS (voor NodeJS) en LiquidJS. De hoofd
 
 Voor de view verander functie is een popover gebruikt die progressive enhanced is. Dat wilt zeggen dat als de browser geen popover ondersteund er niks zichtbaar is. De functionaliteit van de view verander functie is gemaakt met (client-side) Javascript. Ik check hier welke button geklikt is om de juiste classes te triggeren.
 
+```
+viewButtons.forEach((button) => {
+    button.addEventListener('click', ev => {
+
+        const currentID = ev.target.id
+
+        viewButtons.forEach(button => {
+            button.className = ''
+        })
+
+        if (currentID === 'XLarge') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-Xlarge")
+
+            ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid2White.svg"
+        }
+        if (currentID === 'Large') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-large")
+
+            ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid3White.svg"
+        }
+        if (currentID === 'Medium') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-medium")
+
+            ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid4White.svg"
+        }
+        if (currentID === 'Small') {
+            grid.className = ''
+            grid.classList.add("grid-view", "grid-small")
+
+            ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/Grid5White.svg"
+        }
+        if (currentID === 'List') {
+            grid.className = ''
+            grid.classList.add("grid-view", "list")
+
+            ev.target.classList.add("active-view")
+
+            viewImg.src = "/assets/ListWhite.svg"
+        }
+    })
+})
+```
+
+#### Success state
+De hopelijk meest voorkomende UI state is de success state.
+
+<img width="369" height="741" alt="Screenshot 2026-04-01 at 10 41 55" src="https://github.com/user-attachments/assets/4cd072ee-db2b-46a3-9123-e32b2379c05e" />
+
+```
+    if (snapResponse.ok) {
+      response.redirect(303, `/snappmaps/${snappmapid}?status=succes`)
+    } else {
+      response.redirect(303, `/snappmaps/${snappmapid}?status=upload_failed`)
+    }
+```
+
+Met behulp van deze code check ik of de upload gelukt is, zo niet krijgt je een error message, zo wel krijg je de success message.
+
+
 ## Installatie
 Als je de codes zelf wilt aanpassen vergeet dan niet bij het installeren eerst **npm install** te doen.
 
