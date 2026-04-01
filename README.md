@@ -28,6 +28,8 @@ De hoofd functionaliteit van de webapp is het uploaden van snapps naar een speci
 
 In dit project maak ik gebruik van ExpressJS (voor NodeJS) en LiquidJS. De hoofd functionaliteit is een POST van een foto naar de snappmap. De inhoud van het formulier (een foto) wordt doorgestuurd naar de post route die vervolgens het doorstuurd naar de database. Vervolgens halen wij uit de database de bijbehorende ID van de foto op en sturen die door naar de juiste snappmap.
 
+#### PE Popover
+
 Voor de view verander functie is een popover gebruikt die progressive enhanced is. Dat wilt zeggen dat als de browser geen popover ondersteund er niks zichtbaar is. De functionaliteit van de view verander functie is gemaakt met (client-side) Javascript. Ik check hier welke button geklikt is om de juiste classes te triggeren.
 
 ```
@@ -82,6 +84,25 @@ viewButtons.forEach((button) => {
         }
     })
 })
+```
+
+#### PE Animatie
+Er zit een animatie in de snappmap die gebruik maakt van `sibling-index()`. Deze is nog niet goed ondersteund en kan er voor zorgen dan de website niet goed werkt. Hiervoor heb ik **CSS Feature Detection** gebruikt. De browsers die dit al kunnen laten de animatie zijn, terwijl de browsers die dit niet ondersteunen het compleet negeren.
+
+```
+@supports (animation-delay: calc(0.1s * sibling-index())) {
+    @media (prefers-reduced-motion: no-preference) {
+        .snapp-image {
+            animation: --scale-in;
+            animation-duration: 0.2s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.05s * sibling-index());
+
+            opacity: 0;
+        }
+    }
+}
 ```
 
 #### Success state
