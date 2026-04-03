@@ -16,7 +16,6 @@ Maar je kan wel ve view veranderen zodat je op destkop kleinere foto's krijgt.
 
 <img width="1477" height="742" alt="Screenshot 2026-04-01 at 10 07 47" src="https://github.com/user-attachments/assets/290ea4ef-4e4b-47b2-abe0-85546fb2aeef" />
 
-### Toegankelijkheid
 
 ## Gebruik
 
