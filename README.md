@@ -105,7 +105,7 @@ Er zit een animatie in de snappmap die gebruik maakt van `sibling-index()`. Deze
 }
 ```
 
-#### Success state
+#### UI states
 De hopelijk meest voorkomende UI state is de success state.
 
 <img width="369" height="741" alt="Screenshot 2026-04-01 at 10 41 55" src="https://github.com/user-attachments/assets/4cd072ee-db2b-46a3-9123-e32b2379c05e" />
@@ -118,7 +118,12 @@ De hopelijk meest voorkomende UI state is de success state.
     }
 ```
 
-Met behulp van deze code check ik of de upload gelukt is, zo niet krijgt je een error message, zo wel krijg je de success message.
+Met door middel van deze code check ik of de upload gelukt is.
+
+Als de upload niet gelukt is, bijvoorbeeld doordat Directus het niet doet krijg je dit scherm te zien:
+
+<img width="361" height="741" alt="Screenshot 2026-04-03 at 11 46 41" src="https://github.com/user-attachments/assets/b16ee0f2-c8c3-458c-8fe3-6783ff9d05ee" />
+
 
 
 ## Installatie
