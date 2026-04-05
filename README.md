@@ -2,6 +2,8 @@
 
 Snappthis is een mobiele webapplicatie waarmee gebruikers foto's delen binnen zogenoemde snappmaps. Een gebruiker wordt uitgenodigd in een groep; die groep kan meerdere snappmaps bevatten. Een begeleider, bijvoorbeeld een docent, maakt een snappmap aan en geeft deze een thema of opdracht. Deelnemers delen hierin zelfgemaakte foto's, die dienen als inspiratie en gespreksonderwerp vanuit de echte wereld.
 
+[Link naar de live website.](https://the-web-is-for-everyone-interactive-rhmm.onrender.com/snappmaps)
+
 ## Bescrhrijving
 
 ### Responsive
