@@ -2,6 +2,8 @@
 
 Snappthis is een mobiele webapplicatie waarmee gebruikers foto's delen binnen zogenoemde snappmaps. Een gebruiker wordt uitgenodigd in een groep; die groep kan meerdere snappmaps bevatten. Een begeleider, bijvoorbeeld een docent, maakt een snappmap aan en geeft deze een thema of opdracht. Deelnemers delen hierin zelfgemaakte foto's, die dienen als inspiratie en gespreksonderwerp vanuit de echte wereld.
 
+[Link naar de live website.](https://the-web-is-for-everyone-interactive-rhmm.onrender.com/snappmaps)
+
 ## Bescrhrijving
 
 ### Responsive
@@ -16,7 +18,6 @@ Maar je kan wel ve view veranderen zodat je op destkop kleinere foto's krijgt.
 
 <img width="1477" height="742" alt="Screenshot 2026-04-01 at 10 07 47" src="https://github.com/user-attachments/assets/290ea4ef-4e4b-47b2-abe0-85546fb2aeef" />
 
-### Toegankelijkheid
 
 ## Gebruik
 
@@ -105,7 +106,7 @@ Er zit een animatie in de snappmap die gebruik maakt van `sibling-index()`. Deze
 }
 ```
 
-#### Success state
+#### UI states
 De hopelijk meest voorkomende UI state is de success state.
 
 <img width="369" height="741" alt="Screenshot 2026-04-01 at 10 41 55" src="https://github.com/user-attachments/assets/4cd072ee-db2b-46a3-9123-e32b2379c05e" />
@@ -118,7 +119,12 @@ De hopelijk meest voorkomende UI state is de success state.
     }
 ```
 
-Met behulp van deze code check ik of de upload gelukt is, zo niet krijgt je een error message, zo wel krijg je de success message.
+Met door middel van deze code check ik of de upload gelukt is.
+
+Als de upload niet gelukt is, bijvoorbeeld doordat Directus het niet doet krijg je dit scherm te zien:
+
+<img width="361" height="741" alt="Screenshot 2026-04-03 at 11 46 41" src="https://github.com/user-attachments/assets/b16ee0f2-c8c3-458c-8fe3-6783ff9d05ee" />
+
 
 
 ## Installatie
