@@ -33,7 +33,7 @@ In dit project maak ik gebruik van ExpressJS (voor NodeJS) en LiquidJS. De hoofd
 
 Voor de view verander functie is een popover gebruikt die progressive enhanced is. Dat wilt zeggen dat als de browser geen popover ondersteund er niks zichtbaar is. De functionaliteit van de view verander functie is gemaakt met (client-side) Javascript. Ik check hier welke button geklikt is om de juiste classes te triggeren.
 
-```
+```js
 viewButtons.forEach((button) => {
     button.addEventListener('click', ev => {
 
