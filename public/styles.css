@@ -11,6 +11,10 @@
     src: url('fonts/Bariol_Regular.otf');
 }
 
+@view-transition {
+    navigation: auto;
+}
+
 :root {
     /* Custom properties: widely */
     --color-primary: #172F3B;

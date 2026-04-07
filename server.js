@@ -111,8 +111,6 @@ app.post('/snappmaps/:uuid', upload.single('file'), async function (request, res
   const snappmapid = request.params.uuid
   const file = request.file
 
-  console.log(file)
-
   const formData = new FormData()
   const blob = new Blob([file.buffer], { type: file.mimetype })
   formData.append("file", blob, file.originalname)
